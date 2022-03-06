@@ -17,8 +17,8 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
-    @Size(max = 30)
+    @NotBlank()
+    @Size(max = 30, message = "{categoria.validation.size}")
     @Column(length = 30)
     private String nome;
 }

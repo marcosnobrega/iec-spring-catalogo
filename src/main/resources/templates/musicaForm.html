@@ -31,11 +31,23 @@
                     <div class="alert alert-warning" th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}"></div>
                 </div>
 
-                <textarea id="summernote" type="text" class="form-control" name="letra" placeholder="Letra *"
-                          th:text="${musica.letra}">
+                <div class="form-group">
+                    <textarea id="summernote" type="text" class="form-control" name="letra" placeholder="Letra *"
+                            th:text="${musica.letra}">
 
-                </textarea>
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('letra')}" th:errors="*{letra}"></div>
+                    </textarea>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('letra')}" th:errors="*{letra}"></div>
+                </div>
+
+                <div class="form-group">
+                    <select name="categoria" class="form-control">
+                        <option value="">Categoria</option>
+                        <option th:each="categoria : ${categorias}" 
+                            th:value="${categoria.id}" th:text="${categoria.nome}"
+                            th:selected="${categoria == musica.categoria}"></option>
+                    </select>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+                </div>
 
                 <small class="form-text text-muted">(*) Campos obrigatórios</small>
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,6 +63,20 @@ public class CategoriaController {
             return categoriaForm;
         }
         categoriaService.save(categoria);
+        return new ModelAndView("redirect:/categorias");
+    }
+
+    @RequestMapping(value = "/categoria/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView getCategoriaEditForm(@PathVariable("id") long id) {
+        ModelAndView categoriaForm = new ModelAndView("categoriaForm");
+        Categoria categoria = this.categoriaService.findById(id);
+        categoriaForm.addObject("categoria", categoria);
+        return categoriaForm;
+    }
+
+    @RequestMapping(value = "/categoria/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deletarCategoria(@PathVariable("id") long id) {
+        this.categoriaService.excluir(id);
         return new ModelAndView("redirect:/categorias");
     }
 }

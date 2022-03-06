@@ -42,4 +42,9 @@ public class CatalogoServiceImpl implements CatalogoService {
         return catalogoRepository.findAllByTituloIsLike(tituloLike);
     }
 
+    @Override
+    public List<Musica> findByTituloAndCategoriaId(String titulo, long categoriaId) {
+        return catalogoRepository.findAllByTituloContainingAndCategoriaId(titulo, categoriaId);
+    }
+
 }

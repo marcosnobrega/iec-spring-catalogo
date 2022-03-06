@@ -19,12 +19,17 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
+                <th scope="col">Acoes</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="categoria : ${categorias}">
                 <th scope="row" th:text="${categoria.id}"></th>
                 <td th:text="${categoria.nome}"></td>
+                <td>
+                    <a th:href="@{/categoria/edit/{id}(id=${categoria.id})}" class="btn btn-primary">Editar</a>
+                    <a th:href="@{/categoria/delete/{id}(id=${categoria.id})}" class="btn btn-danger">Deletar</a>
+                </td>
             </tr>
             </tbody>
         </table>

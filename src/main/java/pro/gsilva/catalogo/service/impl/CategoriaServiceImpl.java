@@ -17,4 +17,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     public Page<Categoria> findAll(Pageable pageable) {
         return categoriaRepository.findAll(pageable);
     }
+
+    @Override
+    public Categoria save(Categoria categoria) {
+        return categoriaRepository.save(categoria);
+    }
 }
